@@ -1,0 +1,9 @@
+{
+  "name": "Gastos Familiares",
+  "short_name": "Gastos",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050812",
+  "theme_color": "#050812"
+}
