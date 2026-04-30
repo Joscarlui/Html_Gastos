@@ -244,8 +244,7 @@
 			syncUrl=url.replace(/^https?:\/\//,'').replace(/\/$/,'');
 			localStorage.setItem('sync_server',syncUrl);
 			syncEnabled=true;
-			$('#serverUrl').value=syncUrl;
-			syncFromServer(); // solo carga al abrir
+			syncFromServer();
 		}
 
         const load=()=>{
@@ -345,7 +344,12 @@
         load();
         updateCatUI();
         $('#fecha').value=hoy();
-        enableSync(window.location.host);
+        if(location.protocol.startsWith('http')){
+			enableSync(window.location.host);
+		}else{
+			// si lo abres con file://
+			enableSync('192.168.18.210:3000');
+		}
 
         const toggleCat=()=>$('#wrapCat').style.display=$('#tg').checked?'block':'none';
         toggleCat();
