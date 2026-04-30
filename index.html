@@ -135,5 +135,10 @@
         load();updateCatUI();$('#fecha').value=hoy();if(syncUrl){$('#serverUrl').value=syncUrl;enableSync(syncUrl)}const toggleCat=()=>$('#wrapCat').style.display=$('#tg').checked?'block':'none';toggleCat();$('#tg').onchange=$('#ti').onchange=toggleCat;$('#f').addEventListener('submit',e=>{e.preventDefault();const t=$('#tg').checked?'gasto':'ingreso';const c=t==='gasto'?$('#cat').value:'Ingreso';add(t,c,$('#desc').value,$('#monto').value,$('#fecha').value);e.target.reset();$('#fecha').value=hoy();$('#tg').checked=true;toggleCat()});$('#btnAddCat').onclick=()=>{const v=$('#newCat').value.trim();if(v&&!D.cats.includes(v)){D.cats.push(v);saveLocal();updateCatUI();$('#newCat').value=''}};$('#btnConectar').onclick=()=>{const u=$('#serverUrl').value.trim();if(u)enableSync(u);else toast('Ingresa IP')};$('#ft').onchange=$('#fc').onchange=$('#ff').onchange=$('#fs').oninput=render;$('#btnClear').onclick=()=>{$('#ft').value='todos';$('#fc').value='todas';$('#ff').value='';$('#fs').value='';render()};$('#btnGuardar').onclick=guardarTodo;$('#btnCSV').onclick=exportCSV;window.delTx=del;render();
     })();
     </script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script></body>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js');
+}
+</script>
+</body>
 </html>
